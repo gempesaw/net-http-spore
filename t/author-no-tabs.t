@@ -1,15 +1,15 @@
 
 BEGIN {
-  unless ($ENV{RELEASE_TESTING}) {
+  unless ($ENV{AUTHOR_TESTING}) {
     require Test::More;
-    Test::More::plan(skip_all => 'these tests are for release candidate testing');
+    Test::More::plan(skip_all => 'these tests are for testing by the author');
   }
 }
 
 use strict;
 use warnings;
 
-# this test was generated with Dist::Zilla::Plugin::NoTabsTests 0.06
+# this test was generated with Dist::Zilla::Plugin::Test::NoTabs 0.13
 
 use Test::More 0.88;
 use Test::NoTabs;
@@ -31,6 +31,7 @@ my @files = (
     'lib/Net/HTTP/Spore/Middleware/Format.pm',
     'lib/Net/HTTP/Spore/Middleware/Format/Auto.pm',
     'lib/Net/HTTP/Spore/Middleware/Format/JSON.pm',
+    'lib/Net/HTTP/Spore/Middleware/Format/Text.pm',
     'lib/Net/HTTP/Spore/Middleware/Format/XML.pm',
     'lib/Net/HTTP/Spore/Middleware/Format/YAML.pm',
     'lib/Net/HTTP/Spore/Middleware/LogDispatch.pm',
@@ -45,7 +46,42 @@ my @files = (
     'lib/Net/HTTP/Spore/Role/Description.pm',
     'lib/Net/HTTP/Spore/Role/Middleware.pm',
     'lib/Net/HTTP/Spore/Role/Request.pm',
-    'lib/Net/HTTP/Spore/Role/UserAgent.pm'
+    'lib/Net/HTTP/Spore/Role/UserAgent.pm',
+    't/specs/api.json',
+    't/specs/api2.json',
+    't/spore-method/base.t',
+    't/spore-method/payload.t',
+    't/spore-middleware/anonymous.t',
+    't/spore-middleware/auth-basic.t',
+    't/spore-middleware/auth-header.t',
+    't/spore-middleware/auth-oauth.t',
+    't/spore-middleware/format-auto.t',
+    't/spore-middleware/format-json.t',
+    't/spore-middleware/format-xml.t',
+    't/spore-middleware/format-yaml.t',
+    't/spore-middleware/ns.t',
+    't/spore-middleware/redirection.t',
+    't/spore-middleware/runtime.t',
+    't/spore-middleware/useragent.t',
+    't/spore-middleware/x-do-not-track.t',
+    't/spore-request/base.t',
+    't/spore-request/exception.t',
+    't/spore-request/finalize.t',
+    't/spore-request/form_data.t',
+    't/spore-request/headers.t',
+    't/spore-request/new.t',
+    't/spore-request/request_uri.t',
+    't/spore-request/script_name.t',
+    't/spore-request/uri.t',
+    't/spore-response/body.t',
+    't/spore-response/debug.t',
+    't/spore-response/headers.t',
+    't/spore-response/new.t',
+    't/spore-response/response.t',
+    't/spore-response/timeout.t',
+    't/spore-role/basic.t',
+    't/spore/01_new_from_string.t',
+    't/spore/02_enable.t'
 );
 
 notabs_ok($_) foreach @files;
