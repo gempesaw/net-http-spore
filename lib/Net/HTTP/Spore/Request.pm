@@ -305,7 +305,9 @@ sub finalize {
     }
 
     # clean remaining :name in url
-    $path_info =~ s/:\w+//g if $path_info;
+	# do not clean colons preceded by a slash
+    $path_info =~ s/(?<!\\):\w+//g if $path_info;
+    $path_info =~ s/\\:(\w+)/:$1/g if $path_info;
 
     my $query_string;
     if (scalar @$query) {
