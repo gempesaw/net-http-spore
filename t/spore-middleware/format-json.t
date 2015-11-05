@@ -21,7 +21,7 @@ my $mock_server = {
     },
     '/add' => sub {
         my $req = shift;
-        is( $req->header('Content-Type'), 'application/json;' );
+        is( $req->header('Content-Type'), 'application/json' );
         is_deeply( JSON::decode_json( $req->body ), $payload );
         $req->new_response(
             200,
