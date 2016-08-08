@@ -107,7 +107,7 @@ sub _debug_response {
     foreach my $key ( $response->headers->header_field_names ) {
         $self->_trace_msg( '< %s: %s', $key, $response->header($key) );
     }
-    $self->_trace_verbose($response->body);
+    $self->_trace_verbose('%s', $response->body);
 }
 
 1;
